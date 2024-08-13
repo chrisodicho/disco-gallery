@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Root } from './routes/root';
 import { Artwork, loader as artworkLoader } from './routes/artwork';
 
+import { store } from './store';
+import { Provider } from 'react-redux';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,7 +24,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
 
