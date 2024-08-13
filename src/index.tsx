@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Root } from './routes/root';
-import { Artwork } from './routes/artwork';
+import { Artwork, loader as artworkLoader } from './routes/artwork';
 
 const router = createBrowserRouter([
   {
@@ -12,8 +12,9 @@ const router = createBrowserRouter([
     element: <Root />,
   },
   {
-    path: '/artwork/:id',
+    path: 'artwork/:id',
     element: <Artwork />,
+    loader: artworkLoader,
   },
 ]);
 
