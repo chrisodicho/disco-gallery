@@ -1,17 +1,6 @@
-export async function loader({
-  params,
-}: {
-  params: {
-    id?: string;
-  };
-}) {
-  if (params.id) {
-    // fetch data and return artwork
-  }
-
-  return { artwork: null };
-}
+import { useParams } from 'react-router-dom';
 
 export function Artwork() {
+  let { id } = useParams();
   return <div>{'Artwork route'}</div>;
 }

@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Root } from './routes/root';
-import { Artwork, loader as artworkLoader } from './routes/artwork';
+import { Artwork } from './routes/artwork';
 
 import { store } from './store';
 import { Provider } from 'react-redux';
@@ -17,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: 'artwork/:id',
     element: <Artwork />,
-    loader: artworkLoader,
   },
 ]);
 

@@ -1,8 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { artworkApi } from './services/artwork';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [artworkApi.reducerPath]: artworkApi.reducer,
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(artworkApi.middleware),
 });
+
+setupListeners(store.dispatch);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
