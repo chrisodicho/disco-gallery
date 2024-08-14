@@ -1,16 +1,27 @@
 import { Link } from 'react-router-dom';
 import { useListArtworksQuery } from '../services/artwork';
 import { ArtworkImage } from '../components/artwork-image';
+import { LoadingSpinner } from '../components/loading-spinner';
 
 export function Root() {
   const { data, isFetching } = useListArtworksQuery('');
 
   if (isFetching && !data) {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (!data) {
-    return <div>No artworks found</div>;
+    return (
+      <div className="p-12 flex flex-col h-screen max-h-screen">
+        <div className="flex flex-col justify-center text-center space-y-2 py-6">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">No artworks found</h2>
+        </div>
+      </div>
+    );
   }
 
   const { data: artworks, config } = data;
