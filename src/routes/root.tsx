@@ -6,7 +6,7 @@ import { LoadingSpinner } from '../components/loading-spinner';
 export function Root() {
   const { data, isFetching } = useListArtworksQuery('');
 
-  if (isFetching && !data) {
+  if (isFetching && !data?.data?.length) {
     return (
       <div className="w-screen h-screen flex items-center justify-center">
         <LoadingSpinner />
@@ -14,7 +14,7 @@ export function Root() {
     );
   }
 
-  if (!data) {
+  if (!data?.data?.length) {
     return (
       <div className="p-12 flex flex-col h-screen max-h-screen">
         <div className="flex flex-col justify-center text-center space-y-2 py-6">

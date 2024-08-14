@@ -13,7 +13,11 @@ type GetArtworkResponse = {
 
 export const artworkApi = createApi({
   reducerPath: 'artworkApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://corsproxy.io/?https://api.artic.edu/api/v1' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl:
+      process.env.NODE_ENV === 'test' ? 'http://localhost' : 'https://corsproxy.io/?https://api.artic.edu/api/v1',
+  }),
+  keepUnusedDataFor: process.env.NODE_ENV === 'test' ? 0 : 60,
   endpoints: builder => ({
     listArtworks: builder.query<ListArtworksResponse, string>({
       query: () => `/artworks?limit=12&fields=id,title,image_id`,
