@@ -1,10 +1,24 @@
 import { ArtworkConfig, ArtworkData } from '../types';
 
-export function ArtworkImage({ artwork, config }: { artwork: ArtworkData; config: ArtworkConfig }) {
+export function ArtworkImage({
+  artwork,
+  config,
+  hasTitle = false,
+}: {
+  artwork: ArtworkData;
+  config: ArtworkConfig;
+  hasTitle?: boolean;
+}) {
   return (
     <div className="relative rounded-lg overflow-hidden">
-      <img className="h-auto max-w-full" src={buildImageUrl(config.iiif_url, artwork.image_id)} alt={artwork.title} />
-      <div className="text-white absolute bottom-0 left-0 right-0 w-full p-2 bg-black/75">{artwork.title}</div>
+      <img
+        className="h-auto max-w-full max-h-full"
+        src={buildImageUrl(config.iiif_url, artwork.image_id)}
+        alt={artwork.title}
+      />
+      {hasTitle && (
+        <div className="text-white absolute bottom-0 left-0 right-0 w-full p-2 bg-black/75">{artwork.title}</div>
+      )}
     </div>
   );
 }

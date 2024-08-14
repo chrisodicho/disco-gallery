@@ -30,7 +30,7 @@ export function Root() {
             title={artwork.title}
             className="block break-inside-avoid"
           >
-            <ArtworkImage artwork={artwork} config={config} />
+            <ArtworkImage artwork={artwork} config={config} hasTitle />
           </Link>
         ))}
       </div>
