@@ -48,9 +48,11 @@ export function Artwork() {
         <ArtworkImage artwork={artwork} config={config} />
       </div>
 
-      <div className="flex flex-col justify-center text-center space-y-2 py-6 text-gray-400 text-sm">
-        Credit: {artwork.credit_line}
-      </div>
+      {artwork.credit_line && (
+        <div className="flex flex-col justify-center text-center space-y-2 py-6 text-gray-400 text-sm">
+          Credit: {artwork.credit_line}
+        </div>
+      )}
     </div>
   );
 }
