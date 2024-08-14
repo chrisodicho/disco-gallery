@@ -39,7 +39,7 @@ export function Root() {
             key={artwork.id}
             to={`/artwork/${artwork.id}`}
             title={artwork.title}
-            className="block break-inside-avoid"
+            className="block break-inside-avoid hover:outline hover:outline-blue-500 hover:shadow-lg"
           >
             <ArtworkImage artwork={artwork} config={config} hasTitle />
           </Link>

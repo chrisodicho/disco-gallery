@@ -10,7 +10,7 @@ export function ArtworkImage({
   hasTitle?: boolean;
 }) {
   return (
-    <div className="relative rounded-lg overflow-hidden">
+    <div className="relative overflow-hidden">
       <img
         className="h-auto max-w-full max-h-full"
         src={buildImageUrl(config.iiif_url, artwork.image_id)}
