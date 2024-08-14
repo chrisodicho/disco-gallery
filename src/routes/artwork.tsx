@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetArtworkQuery } from '../services/artwork';
+import { ArtworkImage } from '../components/artwork-image';
 
 export function Artwork() {
   let { id } = useParams();
@@ -20,11 +21,7 @@ export function Artwork() {
   return (
     <div>
       <div>{artwork.title}</div>
-      <img src={buildImageUrl(config.iiif_url, artwork.image_id)} alt={artwork.title} width={100} />
+      <ArtworkImage artwork={artwork} config={config} />
     </div>
   );
-}
-
-function buildImageUrl(iiif_url: string, image_id: string) {
-  return `${iiif_url}/${image_id}/full/843,/0/default.jpg`;
 }

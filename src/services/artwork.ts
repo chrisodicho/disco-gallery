@@ -1,14 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-type ArtworkData = {
-  id: number;
-  title: string;
-  image_id: string;
-};
-
-type ArtworkConfig = {
-  iiif_url: string;
-};
+import { ArtworkConfig, ArtworkData } from '../types';
 
 type ListArtworksResponse = {
   data: ArtworkData[];

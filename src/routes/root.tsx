@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useListArtworksQuery } from '../services/artwork';
+import { ArtworkImage } from '../components/artwork-image';
 
 export function Root() {
   const { data, isFetching } = useListArtworksQuery('');
@@ -19,14 +20,10 @@ export function Root() {
       {artworks.map(artwork => (
         <div key={artwork.id}>
           <Link to={`/artwork/${artwork.id}`}>
-            <img src={buildImageUrl(config.iiif_url, artwork.image_id)} alt={artwork.title} width={100} />
+            <ArtworkImage artwork={artwork} config={config} />
           </Link>
         </div>
       ))}
     </div>
   );
-}
-
-function buildImageUrl(iiif_url: string, image_id: string) {
-  return `${iiif_url}/${image_id}/full/843,/0/default.jpg`;
 }
