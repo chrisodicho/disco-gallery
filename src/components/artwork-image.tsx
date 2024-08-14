@@ -2,11 +2,10 @@ import { ArtworkConfig, ArtworkData } from '../types';
 
 export function ArtworkImage({ artwork, config }: { artwork: ArtworkData; config: ArtworkConfig }) {
   return (
-    <img
-      className="h-auto max-w-full rounded-lg"
-      src={buildImageUrl(config.iiif_url, artwork.image_id)}
-      alt={artwork.title}
-    />
+    <div className="relative rounded-lg overflow-hidden">
+      <img className="h-auto max-w-full" src={buildImageUrl(config.iiif_url, artwork.image_id)} alt={artwork.title} />
+      <div className="text-white absolute bottom-0 left-0 right-0 w-full p-2 bg-black/75">{artwork.title}</div>
+    </div>
   );
 }
 
