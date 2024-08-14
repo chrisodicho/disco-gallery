@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useListArtworksQuery } from '../services/artwork';
 
 export function Root() {
@@ -7,15 +8,19 @@ export function Root() {
     return <div>Loading...</div>;
   }
 
-  if (!data && !isFetching) {
+  if (!data) {
     return <div>No artworks found</div>;
   }
 
+  const { data: artworks, config } = data;
+
   return (
     <div>
-      {data?.data.map(artwork => (
+      {artworks.map(artwork => (
         <div key={artwork.id}>
-          <img src={buildImageUrl(data.config.iiif_url, artwork.image_id)} alt={artwork.title} width={100} />
+          <Link to={`/artwork/${artwork.id}`}>
+            <img src={buildImageUrl(config.iiif_url, artwork.image_id)} alt={artwork.title} width={100} />
+          </Link>
         </div>
       ))}
     </div>
