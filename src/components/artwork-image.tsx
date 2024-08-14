@@ -1,7 +1,13 @@
 import { ArtworkConfig, ArtworkData } from '../types';
 
 export function ArtworkImage({ artwork, config }: { artwork: ArtworkData; config: ArtworkConfig }) {
-  return <img src={buildImageUrl(config.iiif_url, artwork.image_id)} alt={artwork.title} width={100} />;
+  return (
+    <img
+      className="h-auto max-w-full rounded-lg"
+      src={buildImageUrl(config.iiif_url, artwork.image_id)}
+      alt={artwork.title}
+    />
+  );
 }
 
 function buildImageUrl(iiif_url: string, image_id: string) {
