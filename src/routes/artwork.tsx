@@ -9,7 +9,7 @@ export function Artwork() {
     skip: !id,
   });
 
-  if (isFetching && !data) {
+  if (isFetching && !data?.data) {
     return (
       <div className="w-screen h-screen flex items-center justify-center">
         <LoadingSpinner />
@@ -17,7 +17,7 @@ export function Artwork() {
     );
   }
 
-  if (!data) {
+  if (!data?.data) {
     return (
       <div className="p-12 flex flex-col h-screen max-h-screen">
         <div className="flex flex-col justify-center text-center space-y-2 py-6">
